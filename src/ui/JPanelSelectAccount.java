@@ -462,6 +462,7 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 				//
 				// Temporary until withdrawal is written
 				//
+				/*
 				JOptionPane.showMessageDialog(atmFrame
 		               , "Customer (" + atmFrame.getPerson().getIdentification() + ")" + " and pin (" + atmFrame.getPerson().getPin() + ")"
 		               + "\n" + "Source Account:"
@@ -472,6 +473,7 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 				// Create the customer panel and place it on the frame
 				JPanelCustomer panelCustomer = new JPanelCustomer(atmFrame);
 				panelCustomer.showPanel();
+				*/
 				//
 				//=======================================================================
 				        
@@ -479,6 +481,9 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 				// Create the withdrawal panel and place it on the frame
 				//JPanelWithdrawal panelWithdrawal = new JPanelWithdrawal(atmFrame);
 				//panelWithdrawal.showPanel();
+
+				JPanelWithdraw panelWithdraw = new JPanelWithdraw(atmFrame);
+				panelWithdraw.showPanel();
 
 				break;
 			}
