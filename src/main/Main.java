@@ -96,12 +96,12 @@ public class Main {
 	{
 		// Loop over the arguments and process each one
 		for (String arg : args) {
-			if (Main.DEBUG)
-				System.err.println("Main.processArgs: arg: " + arg);
-			
 			if (arg.toUpperCase().equals("DEBUG")) DEBUG = true;
 			if (arg.toUpperCase().equals("DECORATED")) DECORATED = true;
 			if (arg.toUpperCase().equals("NOPRINT")) NOPRINT = true;
+
+			if (Main.DEBUG)
+				System.err.println("Main.processArgs: arg: " + arg);
 		}
 		
 		// All done
