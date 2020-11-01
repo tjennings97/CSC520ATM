@@ -33,6 +33,7 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 	private final String ACTION_CANCEL = "CANCEL";
 
 	JFrameATM atmFrame;
+	boolean isDeposit;
 	
 	JLabel lblTitle;
 	JLabel lblMessage;
@@ -47,10 +48,11 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 	 * 
 	 * @param appFrame Parent frame that will hold the panels created by actions performed by this class
 	 */
-	public JPanelSelectAccount(JFrameATM atmFrame) {
+	public JPanelSelectAccount(JFrameATM atmFrame, boolean isDeposit) {
 		
 		// Save the application frame
 		this.atmFrame = atmFrame;
+		this.isDeposit = isDeposit;
 		
 		// Reset the frame's button action listeners
 		atmFrame.setButtonActionDefaults();
@@ -80,7 +82,11 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 		
 		// Create and add components for this panel
 		
-		lblTitle = new JLabel("Please select the Source Account. ");
+		if (isDeposit == true) {
+			lblTitle = new JLabel("Please select account to deposit into ");
+		} else {
+			lblTitle = new JLabel("Please select the Source Account. "); 
+		}
 		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 22));
 		constraints.gridx = 0;
 		constraints.gridy = 1;
@@ -456,6 +462,7 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 				//
 				// Temporary until withdrawal is written
 				//
+				/*
 				JOptionPane.showMessageDialog(atmFrame
 		               , "Customer (" + atmFrame.getPerson().getIdentification() + ")" + " and pin (" + atmFrame.getPerson().getPin() + ")"
 		               + "\n" + "Source Account:"
@@ -466,6 +473,7 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 				// Create the customer panel and place it on the frame
 				JPanelCustomer panelCustomer = new JPanelCustomer(atmFrame);
 				panelCustomer.showPanel();
+				*/
 				//
 				//=======================================================================
 				        
@@ -473,6 +481,9 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 				// Create the withdrawal panel and place it on the frame
 				//JPanelWithdrawal panelWithdrawal = new JPanelWithdrawal(atmFrame);
 				//panelWithdrawal.showPanel();
+
+				JPanelWithdraw panelWithdraw = new JPanelWithdraw(atmFrame);
+				panelWithdraw.showPanel();
 
 				break;
 			}
@@ -488,27 +499,9 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 			
 			case "DEPOSIT":
 			{
-				//=======================================================================
-				//
-				// Temporary until deposit is written
-				//
-				JOptionPane.showMessageDialog(atmFrame
-		               , "Customer (" + atmFrame.getPerson().getIdentification() + ")" + " and pin (" + atmFrame.getPerson().getPin() + ")"
-		               + "\n" + "Source Account:"
-		    	       + "\n" + "AccountType (" + sourceAccount.getAccountType() + ")" + " and AccountNumber (" + sourceAccount.getAccountNumber() + ")"
-		               , "DEPOSIT"
-		               , JOptionPane.PLAIN_MESSAGE);
-			        
-				// Create the customer panel and place it on the frame
-				JPanelCustomer panelCustomer = new JPanelCustomer(atmFrame);
-				panelCustomer.showPanel();
-				//
-				//=======================================================================
-			        
-					
 				// Create the deposit panel and place it on the frame
-				//JPanelDeposit panelDeposit = new JPanelDeposit(atmFrame);
-				//panelDeposit.showPanel();
+				JPanelDeposit panelDeposit = new JPanelDeposit(atmFrame);
+				panelDeposit.showPanel();
 
 				break;
 			}

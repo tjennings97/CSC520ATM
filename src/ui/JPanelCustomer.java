@@ -292,7 +292,7 @@ public class JPanelCustomer extends JPanel implements ActionListener
 				atmFrame.setTransactionType(ACTION_BALANCE);
 				 
 				// Create the select account panel and place it on the frame
-				panelSelectAccount = new JPanelSelectAccount(atmFrame);
+				panelSelectAccount = new JPanelSelectAccount(atmFrame, false);
 				panelSelectAccount.showPanel();
 				
 				break;
@@ -303,7 +303,7 @@ public class JPanelCustomer extends JPanel implements ActionListener
 				atmFrame.setTransactionType(ACTION_WITHDRAWAL);
 				 
 				// Create the select account panel and place it on the frame
-				panelSelectAccount = new JPanelSelectAccount(atmFrame);
+				panelSelectAccount = new JPanelSelectAccount(atmFrame, false);
 				panelSelectAccount.showPanel();
 				
 				break;
@@ -314,7 +314,7 @@ public class JPanelCustomer extends JPanel implements ActionListener
 				atmFrame.setTransactionType(ACTION_TRANSFER);
 				 
 				// Create the select account panel and place it on the frame
-				panelSelectAccount = new JPanelSelectAccount(atmFrame);
+				panelSelectAccount = new JPanelSelectAccount(atmFrame, false);
 				panelSelectAccount.showPanel();
 				
 				break;
@@ -325,7 +325,7 @@ public class JPanelCustomer extends JPanel implements ActionListener
 				atmFrame.setTransactionType(ACTION_DEPOSIT);
 				 
 				// Create the select account panel and place it on the frame
-				panelSelectAccount = new JPanelSelectAccount(atmFrame);
+				panelSelectAccount = new JPanelSelectAccount(atmFrame, true);
 				panelSelectAccount.showPanel();
 				
 				break;
