@@ -243,12 +243,6 @@ public class JPanelTransferConfirmation extends JPanel implements ActionListener
 		// Display source account type
 		lblSourceAccountType.setText(sourceAccount.getAccountType().name());
 
-		// Get target account
-		Account targetAccount = Account.getAccount(atmFrame.getPerson().getIdentification()
-                                                 , atmFrame.getTargetAccountNumber());
-		
-		// Display target account type
-		lblTargetAccountType.setText(targetAccount.getAccountType().name());
 		
 		// Display transaction amount
 		lblAmountValue.setText("$ " + Misc.roundToMoney(atmFrame.getTransactionAmount()));
