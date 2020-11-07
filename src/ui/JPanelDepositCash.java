@@ -93,7 +93,7 @@ public class JPanelDepositCash extends JPanel implements ActionListener
 		constraints.gridheight = 1;
 		constraints.insets = new Insets(0,0,0,0);  //top, left, bottom, right padding
 		constraints.anchor = GridBagConstraints.CENTER;
-		this.add(lblMessage, constraints);
+		this.add(lblMessage, constraints); 
 		
 		lblSubTitle = new JLabel("Press ENTER when finished.  ");
 		lblSubTitle.setFont(new Font("Tahoma", Font.BOLD, 22));
