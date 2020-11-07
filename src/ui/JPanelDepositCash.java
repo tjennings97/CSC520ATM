@@ -23,8 +23,8 @@ import javax.swing.SwingUtilities;
 import main.Main;
 import model.Account;
 
-public class JPanelDeposit extends JPanel implements ActionListener 
-{	
+public class JPanelDepositCash extends JPanel implements ActionListener 
+{
 	private final String ACTION_ENTER = "ENTER";
 	private final String ACTION_CANCEL = "CANCEL";
 
@@ -33,7 +33,6 @@ public class JPanelDeposit extends JPanel implements ActionListener
 	JLabel lblTitle;
 	JLabel lblMessage;
 	JLabel lblSubTitle;
-	JTextField txbDepositAmount;
 	JLabel lblCancel;
 	
 	KeyEventDispatcher keyEventDispatcher = null;
@@ -43,7 +42,7 @@ public class JPanelDeposit extends JPanel implements ActionListener
 	 * 
 	 * @param appFrame Parent frame that will hold the panels created by actions performed by this class
 	 */
-	public JPanelDeposit(JFrameATM atmFrame) {
+	public JPanelDepositCash(JFrameATM atmFrame) {
 		
 		// Save the application frame
 		this.atmFrame = atmFrame;
@@ -75,7 +74,7 @@ public class JPanelDeposit extends JPanel implements ActionListener
 		constraints.insets = new Insets(0,0,0,0);
 		
 		// Create and add components for this panel
-		lblTitle = new JLabel("Please Enter Deposit Ammount: ");
+		lblTitle = new JLabel("Please Insert Cash. ");
 		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 22));
 		constraints.gridx = 0;
 		constraints.gridy = 1;
@@ -96,7 +95,7 @@ public class JPanelDeposit extends JPanel implements ActionListener
 		constraints.anchor = GridBagConstraints.CENTER;
 		this.add(lblMessage, constraints);
 		
-		lblSubTitle = new JLabel("Press ENTER when finished... ");
+		lblSubTitle = new JLabel("Press ENTER when finished.  ");
 		lblSubTitle.setFont(new Font("Tahoma", Font.BOLD, 22));
 		constraints.gridx = 0;
 		constraints.gridy = 3;
@@ -108,18 +107,6 @@ public class JPanelDeposit extends JPanel implements ActionListener
 		
 		int labelWidth = 200;
 		int labelHeight = 40;
-		
-		txbDepositAmount = new JTextField("");
-		txbDepositAmount.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		txbDepositAmount.setColumns(10);
-		txbDepositAmount.setHorizontalAlignment(JTextField.CENTER);
-		constraints.gridx = 0;
-		constraints.gridy = 4;
-		constraints.gridwidth = 2;
-		constraints.gridheight = 1;
-		constraints.insets = new Insets(0,10,0,0);  //top, left, bottom, right padding
-		constraints.anchor = GridBagConstraints.CENTER;
-		this.add(txbDepositAmount, constraints);
 		
 		lblCancel = new JLabel("Cancel ", JLabel.RIGHT);
 		lblCancel.setFont(new Font("Tahoma", Font.BOLD, 22));
@@ -138,19 +125,7 @@ public class JPanelDeposit extends JPanel implements ActionListener
 		lblCancel.setPreferredSize(new Dimension(labelWidth, labelHeight));
 		lblCancel.setMaximumSize(new Dimension(labelWidth, labelHeight));
 		this.add(lblCancel, constraints);
-		
-		// Set initial component focus
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				boolean focused = txbDepositAmount.requestFocusInWindow();
-				if (Main.DEBUG)
-			    	System.err.println(this.getClass().getTypeName() + "."
-					         + (new Throwable().getStackTrace()[0].getMethodName())
-					         + ": focused: >" + focused + "<"
-					          );
-			}
-		});
+
 		
 		// Setup a KeyListener
 		// This code works on a panel.  
@@ -163,10 +138,13 @@ public class JPanelDeposit extends JPanel implements ActionListener
 		                     {
 		 				        @Override
 		 				        public boolean dispatchKeyEvent(KeyEvent ke) {
+ 			               		    
+
 		 				        	boolean handled = false;
 		 				            switch (ke.getID()) {
-		 				  
+
 		 			                case KeyEvent.KEY_PRESSED:
+
 		 			    				if (Main.DEBUG)
 			 						    	System.err.println(this.getClass().getTypeName() + "."
 			 								         + (new Throwable().getStackTrace()[0].getMethodName())
@@ -186,7 +164,7 @@ public class JPanelDeposit extends JPanel implements ActionListener
 		 			        				actionPerformed(actionEvent);
 		 			                    }
 		 			    				break;
-	
+
 		 			                default:
 		 			                	// No action here
 		 			                	// We're just not interested in this key
@@ -207,9 +185,6 @@ public class JPanelDeposit extends JPanel implements ActionListener
 		atmFrame.setContentPanel(this);
 		atmFrame.setTitle(Main.ATM_FRAME_TITLE + " - (" + this.getClass().getSimpleName() + ")");
 		
-		
-        // Default the transaction amount to null
-        atmFrame.setTransactionAmount(null);
 		
 		// Re-paint and re-validate to display the panel
 		atmFrame.repaint();
@@ -240,44 +215,25 @@ public class JPanelDeposit extends JPanel implements ActionListener
 		
 		case ACTION_ENTER:
 			{
-				// Reset message
-				lblMessage.setText("");
-				error = false;
-				
-				// Validate amount
-		        BigDecimal amount = null;
-		        String text = txbDepositAmount.getText();
-		        try
-		        {
-			        amount = new BigDecimal(text);
-			        
-			        // Save the transaction amount
-					atmFrame.setTransactionAmount(amount);
-		        }
-		        catch (NumberFormatException nfEx)
-		        {
-			    	System.err.println(this.getClass().getTypeName() + "."
-					         + (new Throwable().getStackTrace()[0].getMethodName())
-					         + ": NumberFormatException: \n" 
-					         + nfEx.getMessage()
-					          );
-			    	error = true;
-			    	lblMessage.setText("Invalid amount entered.");
-					txbDepositAmount.requestFocusInWindow();
-					txbDepositAmount.selectAll();
-		        }
+
+		        // Get source account
+		        int identification = atmFrame.getPerson().getIdentification();
+		        int sourceAccountNumber = atmFrame.getSourceAccountNumber();
+		        Account sourceAccount = Account.getAccount(identification, sourceAccountNumber);
 		        
-		        if (!error)
-		        // Go to next deposit panel
-				{
-				JPanelDepositCash depositCash = new JPanelDepositCash(atmFrame);
-				depositCash.showPanel();
+				// Do the deposit
+				sourceAccount.depositFunds(this.atmFrame.getTransactionAmount());
+		        Account.getAccount(identification, sourceAccountNumber);
+				
+				JPanelDepositConfirmation depositConfirmation = new JPanelDepositConfirmation(atmFrame);
+				depositConfirmation.showPanel();
 				
 				// Remove the Keyboard manager as we are leaving this panel
              	KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(keyEventDispatcher);
-				}
+		        
 		        break;
 			}
+	
 				
 			case ACTION_CANCEL:
 			{
