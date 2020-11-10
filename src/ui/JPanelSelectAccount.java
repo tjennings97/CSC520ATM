@@ -13,7 +13,6 @@ import java.util.Arrays;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import main.Main;
@@ -410,9 +409,9 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 				
 			case ACTION_CANCEL:
 			{
-				// Create the logon panel and place it on the frame
-				JPanelLogon panelLogon = new JPanelLogon(atmFrame);
-				panelLogon.showPanel();
+				// Create the customer panel and place it on the frame
+				JPanelCustomer panelCustomer = new JPanelCustomer(atmFrame);
+				panelCustomer.showPanel();
 				
 				return;
 			}
