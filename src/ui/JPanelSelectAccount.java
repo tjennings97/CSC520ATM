@@ -82,8 +82,8 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 		
 		// Create and add components for this panel
 		
-		if (isDeposit == true) {
-			lblTitle = new JLabel("Please select account to deposit into ");
+		if (atmFrame.getTransactionType().equals("DEPOSIT")) {
+			lblTitle = new JLabel("Please select the account to deposit into. ");
 		} else {
 			lblTitle = new JLabel("Please select the Source Account. "); 
 		}
@@ -498,12 +498,13 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 			}
 			
 			case "DEPOSIT":
-			{
+			{	
 				// Create the deposit panel and place it on the frame
 				JPanelDeposit panelDeposit = new JPanelDeposit(atmFrame);
 				panelDeposit.showPanel();
 
 				break;
+				
 			}
 		
 			default:
