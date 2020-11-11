@@ -270,7 +270,7 @@ public class JPanelPrintReceipt extends JPanel implements ActionListener
         {
 			doc.insertString(doc.getLength(),               "Balance Receipt: ", heading);
 	        doc.insertString(doc.getLength(), "\n" + "\n" + "Date: " + currentDateTime + "\n", normal);
-	        doc.insertString(doc.getLength(),        "\n" + sourceAccount.getAccountType().name() + ": " 
+	        doc.insertString(doc.getLength(),        "\n" + sourceAccount.getAccountType().getText() + ": " 
 	                                                      + Integer.toString(sourceAccount.getAccountNumber())+ "\n", normal);
 	        doc.insertString(doc.getLength(), "\n" + "\n" + "Balance: " + "$ " + Misc.roundToMoney(sourceAccount.getBalance()).toString()+ "\n", balance);
 		} 
@@ -330,7 +330,7 @@ public class JPanelPrintReceipt extends JPanel implements ActionListener
         {
 			doc.insertString(doc.getLength(),               "Deposit Receipt: ", heading);
 	        doc.insertString(doc.getLength(), "\n" + "\n" + "Date: " + currentDateTime + "\n", normal);
-	        doc.insertString(doc.getLength(),        "\n" + sourceAccount.getAccountType().name() + ": " 
+	        doc.insertString(doc.getLength(),        "\n" + sourceAccount.getAccountType().getText() + ": " 
 	                                                      + Integer.toString(sourceAccount.getAccountNumber())+ "\n", normal);
 	        doc.insertString(doc.getLength(), "\n" + "\n" + "Balance: " + "$ " + Misc.roundToMoney(sourceAccount.getBalance()).toString()+ "\n", balance);
 		} 
@@ -392,11 +392,11 @@ public class JPanelPrintReceipt extends JPanel implements ActionListener
 			doc.insertString(doc.getLength(),               "Transfer Receipt: ", heading);
 	        doc.insertString(doc.getLength(), "\n" + "\n" + "Date: " + currentDateTime + "\n", normal);
 	        doc.insertString(doc.getLength(), "\n" + "\n" + "Source Account: "
-	                                                      + sourceAccount.getAccountType().name() + ": " 
+	                                                      + sourceAccount.getAccountType().getText() + ": " 
                                                           + Integer.toString(sourceAccount.getAccountNumber())+ "\n", normal);
             doc.insertString(doc.getLength(), "\n" + "\n" + "Balance: " + "$ " + Misc.roundToMoney(sourceAccount.getBalance()).toString()+ "\n", balance);
 	        doc.insertString(doc.getLength(), "\n" + "\n" + "Target Account: "
-                                                          + targetAccount.getAccountType().name() + ": " 
+                                                          + targetAccount.getAccountType().getText() + ": " 
                                                           + Integer.toString(targetAccount.getAccountNumber())+ "\n", normal);
             doc.insertString(doc.getLength(), "\n" + "\n" + "Balance: " + "$ " + Misc.roundToMoney(targetAccount.getBalance()).toString()+ "\n", balance);
 		} 
@@ -456,7 +456,7 @@ public class JPanelPrintReceipt extends JPanel implements ActionListener
         {
 			doc.insertString(doc.getLength(),               "Withdrawal Receipt: ", heading);
 	        doc.insertString(doc.getLength(), "\n" + "\n" + "Date: " + currentDateTime + "\n", normal);
-	        doc.insertString(doc.getLength(),        "\n" + sourceAccount.getAccountType().name() + ": " 
+	        doc.insertString(doc.getLength(),        "\n" + sourceAccount.getAccountType().getText() + ": " 
 	                                                      + Integer.toString(sourceAccount.getAccountNumber())+ "\n", normal);
 	        doc.insertString(doc.getLength(), "\n" + "\n" + "Balance: " + "$ " + Misc.roundToMoney(sourceAccount.getBalance()).toString()+ "\n", balance);
 		} 
