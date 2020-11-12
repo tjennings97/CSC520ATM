@@ -52,6 +52,24 @@ public class SQLServer implements IDataAccess {
 		
 		try
 		{
+			if (Main.DEBUG)
+			{
+				System.out.println("*************************************************************************");
+		    	System.out.println(this.getClass().getTypeName() + "."
+				         + (new Throwable().getStackTrace()[0].getMethodName())
+				         + ": Attempting to connect to the database. \n" 
+				         +         this.getClass().getTypeName() + "."
+				         + (new Throwable().getStackTrace()[0].getMethodName())
+				         + ": If the Azure database hasn't been used in 2 hours it is shutdown. \n" 
+				         +         this.getClass().getTypeName() + "."
+				         + (new Throwable().getStackTrace()[0].getMethodName())
+				         + ": In that case the connection could take upto 2 minutes to return. \n" 
+				         +         this.getClass().getTypeName() + "."
+				         + (new Throwable().getStackTrace()[0].getMethodName())
+				         + ": Be patient... " 
+				          );
+				System.out.println("*************************************************************************");
+			}
 			// Get a connection to the database
 			// Note: The connection string does not contain the User and Password
 			//       these are gotten from the "properties" collection

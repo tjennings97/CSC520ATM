@@ -211,7 +211,7 @@ public class Machine
 	 * 
 	 * @return - A PaperStatusEvent object
 	 */
-	public PaperStatusEvent getPapaerStatusEvent()
+	public PaperStatusEvent getPaperStatusEvent()
 	{
 		// all done
 		return paperStatusEvent;
@@ -311,7 +311,7 @@ public class Machine
 	 * 
 	 * @return - The deposit fill percent
 	 */
-	public int getDepositFilPercent()
+	public int getDepositFillPercent()
 	{
 		// All done
 		return depositFillPercent;
