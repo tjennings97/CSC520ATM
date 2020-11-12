@@ -413,9 +413,9 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 				
 			case ACTION_CANCEL:
 			{
-				// Create the logon panel and place it on the frame
-				JPanelLogon panelLogon = new JPanelLogon(atmFrame);
-				panelLogon.showPanel();
+				// Create the customer panel and place it on the frame
+				JPanelCustomer panelCustomer = new JPanelCustomer(atmFrame);
+				panelCustomer.showPanel();
 				
 				return;
 			}
@@ -458,30 +458,8 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 			
 			case "WITHDRAWAL":
 			{
-				//=======================================================================
-				//
-				// Temporary until withdrawal is written
-				//
-				/*
-				JOptionPane.showMessageDialog(atmFrame
-		               , "Customer (" + atmFrame.getPerson().getIdentification() + ")" + " and pin (" + atmFrame.getPerson().getPin() + ")"
-		               + "\n" + "Source Account:"
-		    	       + "\n" + "AccountType (" + sourceAccount.getAccountType() + ")" + " and AccountNumber (" + sourceAccount.getAccountNumber() + ")"
-		               , "WITHDRAWAL"
-		               , JOptionPane.PLAIN_MESSAGE);
-			        
-				// Create the customer panel and place it on the frame
-				JPanelCustomer panelCustomer = new JPanelCustomer(atmFrame);
-				panelCustomer.showPanel();
-				*/
-				//
-				//=======================================================================
-				        
 						
 				// Create the withdrawal panel and place it on the frame
-				//JPanelWithdrawal panelWithdrawal = new JPanelWithdrawal(atmFrame);
-				//panelWithdrawal.showPanel();
-
 				JPanelWithdraw panelWithdraw = new JPanelWithdraw(atmFrame);
 				panelWithdraw.showPanel();
 
