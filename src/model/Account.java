@@ -147,6 +147,9 @@ public class Account {
 			ResultSet resultSet = Main.atmFrame.dataAccess.executeCallString("{call DeductFunds(?, ?, ?)}", identification
 					                                                                                      , accountNumber
 					                                                                                      , amount);
+			
+			// Update internal value
+			balance = balance.subtract(amount);
 					
 			// No result set is returned so need the null check first
 			if(resultSet != null && resultSet.next())
@@ -200,6 +203,9 @@ public class Account {
 			ResultSet resultSet = Main.atmFrame.dataAccess.executeCallString("{call DepositFunds(?, ?, ?)}", identification
 					                                                                                       , accountNumber
 					                                                                                       , amount);
+			
+			// Update internal value
+			balance = balance.add(amount);
 					
 			// No result set is returned so need the null check first
 			if(resultSet != null && resultSet.next())
@@ -259,6 +265,10 @@ public class Account {
 					                                                                                           , targetAccountNumber
 					                                                                                           , amount);
 			
+			// Update internal value
+			balance = balance.subtract(amount);
+			targetAccount.setBalance(targetAccount.getBalance().add(amount));
+			
 			// No result set is returned so need the null check first
 			if(resultSet != null && resultSet.next())
 			{
@@ -292,6 +302,16 @@ public class Account {
 		
 		// All done
 		return success;
+	}
+
+	/**
+	 * This method is private and is only used by the transferFunds 
+	 * method to adjust the balance of the target account.
+	 * 
+	 * @param newBalance set the current balance to this new balance
+	 */
+	private void setBalance(BigDecimal newBalance) {
+		this.balance = newBalance;
 	}
 
 }
