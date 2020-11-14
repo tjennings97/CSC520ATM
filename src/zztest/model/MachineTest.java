@@ -267,7 +267,7 @@ class MachineTest {
 		try
 		{
 			String cashStatus = machine.getCashStatus();
-			MachineCashStatus machineCashStatus = MachineCashStatus.valueOf(cashStatus);
+			MachineCashStatus machineCashStatus = MachineCashStatus.get(cashStatus);
 			
 			assertNotNull(machineCashStatus, "machineCashStatus object should not be null");
 		}
@@ -328,7 +328,7 @@ class MachineTest {
 		try
 		{
 			String paperStatus = machine.getPaperStatus();
-			MachinePaperStatus machinePaperStatus = MachinePaperStatus.valueOf(paperStatus);
+			MachinePaperStatus machinePaperStatus = MachinePaperStatus.get(paperStatus);
 			
 			assertNotNull(machinePaperStatus, "machinePaperStatus object should not be null");
 		}
@@ -389,7 +389,7 @@ class MachineTest {
 		try
 		{
 			String depositStatus = machine.getDepositStatus();
-			MachineDepositStatus machineDepositStatus = MachineDepositStatus.valueOf(depositStatus);
+			MachineDepositStatus machineDepositStatus = MachineDepositStatus.get(depositStatus);
 			
 			assertNotNull(machineDepositStatus, "machineDepositStatus object should not be null");
 		}
