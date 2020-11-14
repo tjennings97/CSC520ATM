@@ -212,59 +212,6 @@ public class Machine
 		// All done
 		return;
 	}
-
-	/**
-	 * 
-	 * @param cashAdjustment the amount of cash withdrawn
-	 */
-	public void adjustCash(BigDecimal cashAdjustment)
-	{
-		// Adjust the cash amount
-		try
-		{
-			// Check that we've lost the connection
-			if (!Main.atmFrame.dataAccess.isConnected())
-			{
-				// Attempt to reconnect
-				Main.atmFrame.dataAccess.connect();
-			}
-					
-			ResultSet resultSet = Main.atmFrame.dataAccess.executeCallString("{call AdjustMachineCash(?, ?)}"
-					                                                       , MACHINE_ID, cashAdjustment);
-			
-			// No result set is returned so need the null check first
-			if(resultSet != null && resultSet.next())
-			{
-				try
-				{
-					// No result set is returned
-				}
-				catch (Exception ex)
-				{
-			    	System.err.println(this.getClass().getTypeName() + "."
-					         + (new Throwable().getStackTrace()[0].getMethodName())
-					         + ": Exception: \n" 
-					         + ex.getMessage()
-					          );
-				}
-			}
-		}
-		catch (SQLException sqlEx)
-		{
-			// Note: the use of Account.class as this is a static method
-	    	System.err.println(Account.class.getTypeName() + "."
-			         + (new Throwable().getStackTrace()[0].getMethodName())
-			         + ": SQLException: \n" 
-			         + sqlEx.getMessage()
-			          );
-		}
-		
-		// Get the current machine status
-		getCurrentMachineStatus();
-		
-		// All done
-		return;
-	}
 	
 	/**
 	 * 
@@ -284,62 +231,6 @@ public class Machine
 					
 			ResultSet resultSet = Main.atmFrame.dataAccess.executeCallString("{call AdjustMachinePaper(?, ?)}"
 					                                                       , MACHINE_ID, paperAdjustment);
-<<<<<<< HEAD
-=======
-			
-			// No result set is returned so need the null check first
-			if(resultSet != null && resultSet.next())
-			{
-				try
-				{
-					// No result set is returned
-				}
-				catch (Exception ex)
-				{
-			    	System.err.println(this.getClass().getTypeName() + "."
-					         + (new Throwable().getStackTrace()[0].getMethodName())
-					         + ": Exception: \n" 
-					         + ex.getMessage()
-					          );
-				}
-			}
-		}
-		catch (SQLException sqlEx)
-		{
-			// Note: the use of Account.class as this is a static method
-	    	System.err.println(Account.class.getTypeName() + "."
-			         + (new Throwable().getStackTrace()[0].getMethodName())
-			         + ": SQLException: \n" 
-			         + sqlEx.getMessage()
-			          );
-		}
-		
-		// Get the current machine status
-		getCurrentMachineStatus();
-		
-		// All done
-		return;
-	}
-
-	/**
-	 * 
-	 * @param depositAdjustment the percent of deposit drawer space used
-	 */
-	public void adjustDeposit(int depositAdjustment)
-	{
-		// Adjust the deposit amount (drawer space fill percent)
-		try
-		{
-			// Check that we've lost the connection
-			if (!Main.atmFrame.dataAccess.isConnected())
-			{
-				// Attempt to reconnect
-				Main.atmFrame.dataAccess.connect();
-			}
-					
-			ResultSet resultSet = Main.atmFrame.dataAccess.executeCallString("{call AdjustMachineDeposit(?, ?)}"
-					                                                       , MACHINE_ID, depositAdjustment);
->>>>>>> main
 			
 			// No result set is returned so need the null check first
 			if(resultSet != null && resultSet.next())
@@ -427,6 +318,7 @@ public class Machine
 		// All done
 		return;
 	}
+
 	
 	/**
 	 * 
@@ -442,7 +334,7 @@ public class Machine
 	 * 
 	 * @return - A PaperStatusEvent object
 	 */
-	public PaperStatusEvent getPaperStatusEvent()
+	public PaperStatusEvent getPapaerStatusEvent()
 	{
 		// all done
 		return paperStatusEvent;
@@ -542,7 +434,7 @@ public class Machine
 	 * 
 	 * @return - The deposit fill percent
 	 */
-	public int getDepositFillPercent()
+	public int getDepositFilPercent()
 	{
 		// All done
 		return depositFillPercent;
