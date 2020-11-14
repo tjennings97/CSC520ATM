@@ -81,7 +81,6 @@ public class JPanelDepositConfirmation extends JPanel implements ActionListener
 		constraints.anchor = GridBagConstraints.CENTER;
 		this.add(lblTitle, constraints);
 		
-		
 		lblMessage = new JLabel(" ");
 		lblMessage.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblMessage.setForeground(Color.RED);
@@ -103,7 +102,7 @@ public class JPanelDepositConfirmation extends JPanel implements ActionListener
 		constraints.anchor = GridBagConstraints.EAST;
 		this.add(lblSourceAccount, constraints);
 		
-		lblSourceAccountType = new JLabel(" ");
+		lblSourceAccountType = new JLabel("Undefined ");
 		lblSourceAccountType.setFont(new Font("Tahoma", Font.BOLD, 22));
 		constraints.gridx = 1;
 		constraints.gridy = 3;
@@ -111,7 +110,7 @@ public class JPanelDepositConfirmation extends JPanel implements ActionListener
 		constraints.gridheight = 1;
 		constraints.insets = new Insets(0,10,0,0);  //top, left, bottom, right padding
 		constraints.anchor = GridBagConstraints.WEST;
-		this.add(lblSourceAccountType, constraints); 
+		this.add(lblSourceAccountType, constraints);
 		
 		lblAmount = new JLabel("Amount: ");
 		lblAmount.setFont(new Font("Tahoma", Font.BOLD, 22));
@@ -190,7 +189,7 @@ public class JPanelDepositConfirmation extends JPanel implements ActionListener
 		lblSourceAccountType.setText(sourceAccount.getAccountType().name());
 		
 		// Display account balance
-		lblAmountValue.setText("$ " + Misc.roundToMoney(sourceAccount.getBalance()).toString());
+		lblAmountValue.setText("$ " + Misc.roundToMoney(atmFrame.getTransactionAmount()));
 		
 		// Re-paint and re-validate to display the panel
 		atmFrame.repaint();

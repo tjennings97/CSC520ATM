@@ -13,7 +13,6 @@ import java.util.Arrays;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import main.Main;
@@ -33,7 +32,6 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 	private final String ACTION_CANCEL = "CANCEL";
 
 	JFrameATM atmFrame;
-	boolean isDeposit;
 	
 	JLabel lblTitle;
 	JLabel lblMessage;
@@ -48,11 +46,10 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 	 * 
 	 * @param appFrame Parent frame that will hold the panels created by actions performed by this class
 	 */
-	public JPanelSelectAccount(JFrameATM atmFrame, boolean isDeposit) {
+	public JPanelSelectAccount(JFrameATM atmFrame) {
 		
 		// Save the application frame
 		this.atmFrame = atmFrame;
-		this.isDeposit = isDeposit;
 		
 		// Reset the frame's button action listeners
 		atmFrame.setButtonActionDefaults();
@@ -81,7 +78,6 @@ public class JPanelSelectAccount extends JPanel implements ActionListener
 		constraints.insets = new Insets(0,0,0,0);
 		
 		// Create and add components for this panel
-		
 		if (atmFrame.getTransactionType().equals("DEPOSIT")) {
 			lblTitle = new JLabel("Please select the account to deposit into. ");
 		} else {

@@ -75,7 +75,7 @@ public class JPanelDeposit extends JPanel implements ActionListener
 		constraints.insets = new Insets(0,0,0,0);
 		
 		// Create and add components for this panel
-		lblTitle = new JLabel("Please Enter Deposit Ammount: ");
+		lblTitle = new JLabel("Please Enter Deposit Amount: ");
 		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 22));
 		constraints.gridx = 0;
 		constraints.gridy = 1;
