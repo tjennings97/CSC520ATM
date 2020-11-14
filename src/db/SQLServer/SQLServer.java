@@ -70,10 +70,7 @@ public class SQLServer implements IDataAccess {
 				          );
 				System.out.println("*************************************************************************");
 			}
-<<<<<<< HEAD
-			
-=======
->>>>>>> main
+
 			// Get a connection to the database
 			// Note: The connection string does not contain the User and Password
 			//       these are gotten from the "properties" collection
