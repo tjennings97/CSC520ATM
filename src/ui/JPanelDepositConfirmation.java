@@ -191,6 +191,9 @@ public class JPanelDepositConfirmation extends JPanel implements ActionListener
 		// Display account balance
 		lblAmountValue.setText("$ " + Misc.roundToMoney(atmFrame.getTransactionAmount()));
 		
+		// Update drawer fill percentage 
+		atmFrame.getMachine().adjustDeposit(5);
+		
 		// Re-paint and re-validate to display the panel
 		atmFrame.repaint();
 		atmFrame.revalidate();
