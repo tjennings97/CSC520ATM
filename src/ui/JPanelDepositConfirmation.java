@@ -177,6 +177,9 @@ public class JPanelDepositConfirmation extends JPanel implements ActionListener
 	
 	public void showPanel() {
 		
+		// Update drawer fill percentage 
+		atmFrame.getMachine().adjustDeposit(5);
+		
 		// Set this panel as the frame's content panel and update the frame title
 		atmFrame.setContentPanel(this);
 		atmFrame.setTitle(Main.ATM_FRAME_TITLE + " - (" + this.getClass().getSimpleName() + ")");
@@ -187,12 +190,9 @@ public class JPanelDepositConfirmation extends JPanel implements ActionListener
 	
 		// Display source account type
 		lblSourceAccountType.setText(sourceAccount.getAccountType().name());
-		
+	
 		// Display account balance
 		lblAmountValue.setText("$ " + Misc.roundToMoney(atmFrame.getTransactionAmount()));
-		
-		// Update drawer fill percentage 
-		atmFrame.getMachine().adjustDeposit(5);
 		
 		// Re-paint and re-validate to display the panel
 		atmFrame.repaint();
