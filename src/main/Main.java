@@ -69,7 +69,7 @@ public class Main {
 		
 		try 
 		{
-		    Thread.sleep(1 * 1000); // Sleep for 2 seconds
+		    Thread.sleep(2 * 1000); // Sleep for 2 seconds
 		} 
 		catch (InterruptedException intrrptdEx) 
 		{
