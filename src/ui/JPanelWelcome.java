@@ -77,7 +77,7 @@ public class JPanelWelcome extends JPanel implements ActionListener
 		
 		lblWelcome = new JLabel("Welcome ");
 		lblWelcome.setFont(new Font("Tahoma", Font.BOLD, 34));
-		lblWelcome.setForeground(new Color(0xFFCC00));
+		lblWelcome.setForeground(new Color(0xB38F00));
 		//lblWelcome.setForeground(Color.YELLOW);
 		constraints.gridx = 0;
 		constraints.gridy = 0;
@@ -88,7 +88,7 @@ public class JPanelWelcome extends JPanel implements ActionListener
 		
 		lblTaKeBoBank = new JLabel("TaKeBo Bank ATM ");
 		lblTaKeBoBank.setFont(new Font("Matura MT Script Capitals", Font.ITALIC | Font.BOLD, 34));
-		lblTaKeBoBank.setForeground(new Color(0xFFCC00));
+		lblTaKeBoBank.setForeground(new Color(0xB38F00));
 		//lblTaKeBoBank.setForeground(Color.YELLOW);
 		constraints.gridx = 0;
 		constraints.gridy = 1;
@@ -99,7 +99,7 @@ public class JPanelWelcome extends JPanel implements ActionListener
 		
 		lblEnter = new JLabel("Press ENTER to continue... ");
 		lblEnter.setFont(new Font("Tahoma", Font.BOLD, 34));
-		lblEnter.setForeground(new Color(0xFFCC00));
+		lblEnter.setForeground(new Color(0xB38F00));
 		//lblEnter.setForeground(Color.YELLOW);
 		constraints.gridx = 0;
 		constraints.gridy = 2;
