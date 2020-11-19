@@ -116,6 +116,8 @@ public class JPanelTechnician extends JPanel implements ActionListener
 		
 		lblCashLevelStatus = new JLabel("Undefined ");
 		lblCashLevelStatus.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblCashLevelStatus.setOpaque(true);
+		lblCashLevelStatus.setBackground(Color.GRAY);
 		constraints.gridx = 1;
 		constraints.gridy = 3;
 		constraints.gridwidth = 1;
@@ -136,6 +138,8 @@ public class JPanelTechnician extends JPanel implements ActionListener
 		
 		lblDepositLevelStatus = new JLabel("Undefined ");
 		lblDepositLevelStatus.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblDepositLevelStatus.setOpaque(true);
+		lblDepositLevelStatus.setBackground(Color.GRAY);
 		constraints.gridx = 1;
 		constraints.gridy = 4;
 		constraints.gridwidth = 1;
@@ -156,6 +160,8 @@ public class JPanelTechnician extends JPanel implements ActionListener
 		
 		lblPrinterPaperLevelStatus = new JLabel("Undefined ");
 		lblPrinterPaperLevelStatus.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblPrinterPaperLevelStatus.setOpaque(true);
+		lblPrinterPaperLevelStatus.setBackground(Color.GRAY);
 		constraints.gridx = 1;
 		constraints.gridy = 5;
 		constraints.gridwidth = 1;
