@@ -258,6 +258,9 @@ public class JPanelWithdrawConfirmation extends JPanel implements ActionListener
         
 		// Display transaction amount
 		lblAmountValue.setText("$ " + Misc.roundToMoney(atmFrame.getTransactionAmount()));
+		
+		// Update the cash withdrawal amount (needs to be a negative number, thus the negate() method)
+		atmFrame.getMachine().adjustCash(atmFrame.getTransactionAmount().negate());
 				
 		// Re-paint and re-validate to display the panel
 		atmFrame.repaint();
