@@ -113,18 +113,21 @@ public class Machine
 				{
 					cashStatus = MachineCashStatus.valueOf(resultSet.getString("CashStatus")).getText();
 					cashStatusColor = (Color)(Color.class.getField(resultSet.getString("CashStatusColor"))).get(null);
+					cashStatusColor = cashStatusColor.darker();
 					MachineStatus machineCashStatus = new MachineStatus(cashStatus, cashStatusColor);
 					cashStatusEvent.updateStatus(machineCashStatus);
 					cashAmount = resultSet.getBigDecimal("CashAmount");					
 					
 					paperStatus = MachinePaperStatus.valueOf(resultSet.getString("PaperStatus")).getText();
 					paperStatusColor = (Color)(Color.class.getField(resultSet.getString("PaperStatusColor"))).get(null);
+					paperStatusColor = paperStatusColor.darker();
 					MachineStatus machinePaperStatus = new MachineStatus(paperStatus, paperStatusColor);
 					paperStatusEvent.updateStatus(machinePaperStatus);
 					paperLength = resultSet.getInt("PaperLength");
 					
 					depositStatus = MachineDepositStatus.valueOf(resultSet.getString("DepositStatus")).getText();
 					depositStatusColor = (Color)(Color.class.getField(resultSet.getString("DepositStatusColor"))).get(null);
+					depositStatusColor = depositStatusColor.darker();
 					MachineStatus machineDepositStatus = new MachineStatus(depositStatus, depositStatusColor);
 					depositStatusEvent.updateStatus(machineDepositStatus);
 					depositFillPercent = resultSet.getInt("DepositFillPercent");
